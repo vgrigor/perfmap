@@ -121,7 +121,7 @@ public class SimpleBenchmark {
 
     }
 
-    public static void main(String[] args) throws RunnerException {
+/*    public static void main(String[] args) throws RunnerException {
 
         Options options = new OptionsBuilder()
                 .include(SimpleBenchmark.class.getSimpleName())
@@ -136,7 +136,7 @@ public class SimpleBenchmark {
 
         new Runner(options).run();
 
-    }
+    }*/
 
 }
 

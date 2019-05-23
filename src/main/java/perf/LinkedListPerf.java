@@ -14,6 +14,7 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Threads;
 import org.openjdk.jmh.annotations.Warmup;
+import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -22,10 +23,10 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @BenchmarkMode(Mode.AverageTime)
 @State(Scope.Benchmark)
 //@OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Fork(value = 3, jvmArgs = {"-Xms2G", "-Xmx2G"})
+@Fork(value = 1, jvmArgs = {"-Xms2G", "-Xmx2G"})
 //@Threads(value = 4)
 @Warmup(iterations = 0)//3
-@Measurement(iterations = 8)//8
+@Measurement(iterations = 2)//8
 
 public class LinkedListPerf {
     final static int PREFILL_COUNT = 100_000;
@@ -46,7 +47,7 @@ public class LinkedListPerf {
     }
 
     @Benchmark
-    public void benchmark_LinkedList(){
+    public void benchmark_LinkedList(Blackhole bh){
 
         final Integer val = 1;
 
@@ -58,11 +59,11 @@ public class LinkedListPerf {
             for ( int j = 0; j < 5; ++j )
                 lst.removeLast();
         }
-
+        bh.consume(lst.size());
     }
 
     @Benchmark
-    public void benchmark_ArrayDeque(){
+    public void benchmark_ArrayDeque(Blackhole bh){
 
         final Integer val = 1;
 
@@ -74,7 +75,7 @@ public class LinkedListPerf {
             for ( int j = 0; j < 5; ++j )
                 ast.removeLast();
         }
-
+        bh.consume(lst.size());
     }
 
     public static void main(String[] args) throws RunnerException {
