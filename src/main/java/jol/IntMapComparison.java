@@ -28,13 +28,7 @@ public class IntMapComparison {
 
     final static int size = 10_000_000;
     //final static int size = 100_000;
-/*
-    public static void main( String[] args ) {
-        final int size = 1000000;
-        testHashMap( size );
-        testInt2DoubleOpenHashMap( size );
-    }
-*/
+
 
     @Benchmark
     public static void testInt2DoubleOpenHashMap(
@@ -49,7 +43,7 @@ public class IntMapComparison {
 
     //@Benchmark
     public static void testInt2LongOpenHashMap(
-        //final int size
+        //final int size1
     ) {
         final Int2LongOpenHashMap map = new Int2LongOpenHashMap( size );
         for ( int i = 0; i < size; ++i ) {

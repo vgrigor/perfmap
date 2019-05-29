@@ -8,7 +8,6 @@ import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.info.GraphLayout;
 
 public final class JOLTester {
-
     static final boolean showClassLayeot = false;
     public static void main( String[] args ) {
         final int size = 1_000_000;
@@ -16,7 +15,6 @@ public final class JOLTester {
         testHashMap( size );
         testInt2DoubleOpenHashMap( size );
     }
-
     private static void testInt2DoubleOpenHashMap(
         final int size
     ) {
@@ -24,8 +22,7 @@ public final class JOLTester {
         for ( int i = 0; i < size; ++i ) {
             map.put( i, i );
         }
-
-        if(showClassLayeot)
+        //if(showClassLayeot)
         System.out.println(
             ClassLayout
                 .parseClass( map.getClass() )
@@ -34,8 +31,7 @@ public final class JOLTester {
         System.out.println(
             GraphLayout.parseInstance( map ).toFootprint()
         );
-
-        toImage(map,"Int2DoubleOpenHashMap.jpg");
+        //toImage(map,"Int2DoubleOpenHashMap.jpg");
     }
 
     private static void testHashMap( final int size ) {
