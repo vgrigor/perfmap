@@ -40,7 +40,7 @@ public class DataBaseBloom2 {
     private static int MIN_ID = 5000;
     private static int MAX_ID = 5100;
 
-    private static boolean TEST_MEMORY = true;
+    private static boolean TEST_MEMORY = false;
     private static boolean TEST_PRINT = false;
 
     //Слегка более быстрая реализация массива объектов
