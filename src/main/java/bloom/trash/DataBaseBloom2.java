@@ -1,12 +1,11 @@
-package bloom;
+package bloom.trash;
 
 /*
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 */
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import bloom.BloomFilter;
 import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.concurrent.ThreadLocalRandom;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -149,7 +148,7 @@ public class DataBaseBloom2 {
             }
         }
         if(bh != null)
-            bh.consume(sum);
+        bh.consume(sum);
 
         if(TEST_PRINT)
             System.out.println("sum = " + sum + " (searchStandart)");
@@ -171,8 +170,8 @@ public class DataBaseBloom2 {
 
             int bloomIndex = i;
             BloomFilter nextFilter = filters[bloomIndex];
-
-            if(nextFilter.contains(MIN_ID) || nextFilter.contains(MAX_ID)){
+            //if(i == 5 ){
+            if(nextFilter.contains(MIN_ID)){
                 if(TEST_PRINT) System.out.println("search bloomIndex = " + i);
                 for(int j =0; j < QUANT; j++) {
                     Item item = (Item)iList.get(i * QUANT + j);
