@@ -169,20 +169,7 @@ public class DataBaseBloom2 {
         //Идем сразу по чанкам, и только в отсеянных чанках пройдем по данным
         for(int i =0; i < SIZE/QUANT; i++){
 
-            int bloomIndex = i;
-            BloomFilter nextFilter = filters[bloomIndex];
-
-            if(nextFilter.contains(MIN_ID) || nextFilter.contains(MAX_ID)){
-                if(TEST_PRINT) System.out.println("search bloomIndex = " + i);
-                for(int j =0; j < QUANT; j++) {
-                    Item item = (Item)iList.get(i * QUANT + j);
-
-                    if(item.id > MIN_ID && item.id < MAX_ID){
-
-                        sum += item.id ;
-                    }
-                }
-            }
+            //КОД ПИСАТЬ ТУТ
         }
 
         if(TEST_PRINT)
