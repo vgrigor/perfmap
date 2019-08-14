@@ -1,34 +1,18 @@
-package perf;
+package Task_1;
+
+import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;
-import java.util.concurrent.TimeUnit;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.annotations.Threads;
-import org.openjdk.jmh.annotations.Warmup;
-import org.openjdk.jmh.infra.Blackhole;
-import org.openjdk.jmh.runner.Runner;
-import org.openjdk.jmh.runner.RunnerException;
-import org.openjdk.jmh.runner.options.Options;
-import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 @BenchmarkMode(Mode.AverageTime)
 @State(Scope.Benchmark)
-//@OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Fork(value = 1, jvmArgs = {"-Xms2G", "-Xmx2G"})
-//@Threads(value = 4)
-@Warmup(iterations = 0)//3
-@Measurement(iterations = 2)//8
+@Warmup(iterations = 3)//3
+@Measurement(iterations = 8)//8
 
-public class LinkedListPerf {
+public class LinkedListPerfFirst {
     final static int PREFILL_COUNT = 100_000;
     final static int LOOP_COUNT = 100_000_000;
     final static LinkedList<Integer> lst = new LinkedList<Integer>();
@@ -57,7 +41,7 @@ public class LinkedListPerf {
             for ( int j = 0; j < 5; ++j )
                 lst.addFirst( val );
             for ( int j = 0; j < 5; ++j )
-                lst.removeLast();
+                lst.removeFirst();
 
         }
         bh.consume(lst.size());
@@ -74,12 +58,12 @@ public class LinkedListPerf {
             for ( int j = 0; j < 5; ++j )
                 ast.addFirst( val );
             for ( int j = 0; j < 5; ++j )
-                ast.removeLast();
+                ast.removeFirst();
         }
         bh.consume(lst.size());
     }
 
-    public static void main(String[] args) throws RunnerException {
+/*    public static void main(String[] args) throws RunnerException {
 
         Options options = new OptionsBuilder()
             .include(SimpleBenchmark.class.getSimpleName())
@@ -94,6 +78,6 @@ public class LinkedListPerf {
 
         new Runner(options).run();
 
-    }
+    }*/
 
 }
