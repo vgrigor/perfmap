@@ -8,7 +8,7 @@ import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.info.GraphLayout;
 
 public final class JOLTester {
-    static final boolean showClassLayeot = false;
+    static final boolean showClassLayeot = true;
     public static void main( String[] args ) {
         final int size = 1_000_000;
         //final int size = 100_000;
